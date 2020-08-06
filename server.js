@@ -1,14 +1,16 @@
+// setup dotenv
+require('dotenv').config();
+
 // imports
-const express = require('express');
-const bodyParser = require('body-parser');
+const createService = require('./src/services');
 
-// definitions
+// get port
 const port = process.env.PORT || 4001;
-const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// initialize service
+const service = createService();
 
-app.listen(port, () => {
+// listen to service
+service.listen(port, () => {
   console.log(`🏵️ Bloom started at ${port}`);
 });
